@@ -2,7 +2,7 @@ import shutil
 from getpass import getuser
 usuario = getuser()
 
-origen = f'M:/PAGOS/__Pagos/Pagos_Test/Pagos_Test/bin/Temp/Argenpesos/Resultados/Unificado de NO válidos.xlsx'
+origen = f'M:/PAGOS/__Pagos/Pagos_Test/Pagos_Test/bin/Temp/Credicuotas/Resultados/Unificado de NO válidos.xlsx'
 destino = f'C:/Users/{usuario}/Desktop/'
 
 shutil.copy(origen, destino)
