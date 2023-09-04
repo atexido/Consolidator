@@ -201,16 +201,16 @@ df3 = pd.read_excel(f'{mes_actual_espanol}.xlsx')
 writer = pd.ExcelWriter(f'{mes_actual_espanol}.xlsx', engine='xlsxwriter')
 df3.to_excel(writer, sheet_name='Sheet1', index=False)
 worksheet = writer.sheets['Sheet1']
-worksheet.set_column('A:I', 15)
+worksheet.set_column('A:J', 15)
 writer.save()
 
 archivo = openpyxl.load_workbook(f'{mes_actual_espanol}.xlsx')
 # Obtener la hoja de trabajo
 hoja = archivo['Sheet1']
 # Combinar las celdas de las dos filas de la columna H
-hoja.merge_cells('G2:G3')
+hoja.merge_cells('H2:H3')
 # Centrar el contenido de la celda combinada
-celda = hoja['G2']
+celda = hoja['H2']
 celda.alignment = Alignment(horizontal='center', vertical='center')
 font = Font(color='FF0000')
 celda.font = font
@@ -221,9 +221,9 @@ archivo2 = openpyxl.load_workbook(f'{mes_actual_espanol}.xlsx')
 # Obtener la hoja de trabajo
 hoja2 = archivo2['Sheet1']
 # Combinar las celdas de las dos filas de la columna H
-hoja2.merge_cells('F2:F3')
+hoja2.merge_cells('G2:G3')
 # Centrar el contenido de la celda combinada
-celda2 = hoja2['F2']
+celda2 = hoja2['G2']
 celda2.alignment = Alignment(horizontal='center', vertical='center')
 font2 = Font(color='000000')
 celda2.font = font2
@@ -241,7 +241,7 @@ sheet = book[nombre_hoja]
 # Crear un objeto de estilo para las celdas
 font = Font(color="FF0000")
 # Recorrer cada celda de la columna deseada y aplicar el estilo de letra roja
-for cell in sheet['G']:
+for cell in sheet['H']:
     if isinstance(cell.value, str):
         cell.font = font
 # Guardar los cambios en el archivo
@@ -253,16 +253,16 @@ sem1 = df.loc[0, 'SEMANA1']
 sem2 = df.loc[0, 'SEMANA2']
 sem3 = df.loc[0, 'SEMANA3']
 sem4 = df.loc[0, 'SEMANA4']
-#sem5 = df.loc[0, 'SEMANA5']
+sem5 = df.loc[0, 'SEMANA5']
 
 sem1T = ((sem1*100)/objetivo)
 sem2T = ((sem2*100)/objetivo)
 sem3T = ((sem3*100)/objetivo)
 sem4T = ((sem4*100)/objetivo)
-#sem5T = ((sem5*100)/objetivo)
+sem5T = ((sem5*100)/objetivo)
 
 
-if sem1T < 20:
+if sem1T < 18:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -277,7 +277,7 @@ if sem1T < 20:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem1T >= 20 and sem1T < 25:
+if sem1T >= 18 and sem1T < 21:
 # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -292,7 +292,7 @@ if sem1T >= 20 and sem1T < 25:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem1T >= 25:
+if sem1T >= 21:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -307,7 +307,7 @@ if sem1T >= 25:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem2T < 45:
+if sem2T < 35:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -322,7 +322,7 @@ if sem2T < 45:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem2T >= 45 and sem1T < 50:
+if sem2T >= 35 and sem1T < 40:
 # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -337,7 +337,7 @@ if sem2T >= 45 and sem1T < 50:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem2T >= 50:
+if sem3T >= 40:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -352,7 +352,7 @@ if sem2T >= 50:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem3T < 70:
+if sem3T < 55:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -367,7 +367,7 @@ if sem3T < 70:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem3T >= 70 and sem1T < 75:
+if sem3T >= 55 and sem1T < 60:
 # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -382,7 +382,7 @@ if sem3T >= 70 and sem1T < 75:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem3T >= 75:
+if sem3T >= 60:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -398,7 +398,7 @@ if sem3T >= 75:
     excel.save(f'{mes_actual_espanol}.xlsx')
 
 
-if sem4T < 95:
+if sem4T < 75:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -413,7 +413,7 @@ if sem4T < 95:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem4T >= 95 and sem1T < 100:
+if sem4T >= 75 and sem1T < 80:
 # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -428,7 +428,7 @@ if sem4T >= 95 and sem1T < 100:
     # Guardamos los cambios
     excel.save(f'{mes_actual_espanol}.xlsx')
 
-if sem4T >= 100:
+if sem4T >= 80:
     # Leemos la hoja del archivo que deseamos
     hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
     # Creamos un estilo de fuente y fondo para aplicar a la columna SEMANA2
@@ -444,32 +444,32 @@ if sem4T >= 100:
     excel.save(f'{mes_actual_espanol}.xlsx')
 
 
-#if sem5T < 80:
-    #hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
-    #fill_style = PatternFill(start_color="FF0000", end_color="FF0000", fill_type="solid")
-    #excel = load_workbook(filename=(f'{mes_actual_espanol}.xlsx'))
-    #hoja_openpyxl = excel["Sheet1"]
-    #for celda in hoja_openpyxl["F"]:
-        #celda.fill = fill_style
-    #excel.save(f'{mes_actual_espanol}.xlsx')
+if sem5T < 80:
+    hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
+    fill_style = PatternFill(start_color="FF0000", end_color="FF0000", fill_type="solid")
+    excel = load_workbook(filename=(f'{mes_actual_espanol}.xlsx'))
+    hoja_openpyxl = excel["Sheet1"]
+    for celda in hoja_openpyxl["F"]:
+        celda.fill = fill_style
+    excel.save(f'{mes_actual_espanol}.xlsx')
 
-#if sem5T >= 95 and sem1T < 100:
-    #hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
-    #fill_style = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
-    #excel = load_workbook(filename=(f'{mes_actual_espanol}.xlsx'))
-    #hoja_openpyxl = excel["Sheet1"]
-    #for celda in hoja_openpyxl["F"]:
-        #celda.fill = fill_style
-    #excel.save(f'{mes_actual_espanol}.xlsx')
+if sem5T >= 95 and sem1T < 100:
+    hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
+    fill_style = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+    excel = load_workbook(filename=(f'{mes_actual_espanol}.xlsx'))
+    hoja_openpyxl = excel["Sheet1"]
+    for celda in hoja_openpyxl["F"]:
+        celda.fill = fill_style
+    excel.save(f'{mes_actual_espanol}.xlsx')
 
-#if sem5T >= 100:
-    #hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
-    #fill_style = PatternFill(start_color="00FF00", end_color="00FF00", fill_type="solid")
-    #excel = load_workbook(filename=(f'{mes_actual_espanol}.xlsx'))
-    #hoja_openpyxl = excel["Sheet1"]
-    #for celda in hoja_openpyxl["F"]:
-        #celda.fill = fill_style
-    #excel.save(f'{mes_actual_espanol}.xlsx')
+if sem5T >= 100:
+    hoja_excel = pd.read_excel(df_paint, sheet_name="Sheet1")
+    fill_style = PatternFill(start_color="00FF00", end_color="00FF00", fill_type="solid")
+    excel = load_workbook(filename=(f'{mes_actual_espanol}.xlsx'))
+    hoja_openpyxl = excel["Sheet1"]
+    for celda in hoja_openpyxl["F"]:
+        celda.fill = fill_style
+    excel.save(f'{mes_actual_espanol}.xlsx')
 
 
 df_moneda = pd.read_excel(f'{mes_actual_espanol}.xlsx')
